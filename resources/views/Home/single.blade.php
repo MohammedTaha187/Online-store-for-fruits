@@ -32,8 +32,8 @@
                 <div class="col-md-7">
                     <div class="single-product-content">
                         <h3>{{ $prod->name() }}</h3>
-                       <p>{{ $prod->desc() }}</p>
                         <p class="single-product-pricing"><span>Per Kg</span> ${{ $prod->price }}</p>
+                       <p>{{ $prod->desc() }}</p>
 
                         <div class="single-product-form">
                             <form action="index.html">
@@ -41,13 +41,14 @@
                             </form>
                             <a href="" class="cart-btn">
                                 <i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                <p><strong>Categories: </strong>{{ $prod->category->name() }}</p>
                         </div>
-                        <h4>Share:</h4>
+                        <h4>Talk to us:</h4>
                         <ul class="product-share">
-                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://web.facebook.com/profile.php?id=100008541101034&locale=ar_AR"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="https://github.com/MohammedTaha187"><i class="fab fa-github"></i></a></li>
+                            <li><a href="mailto:engmohammed1872@gmail.com"><i class="fas fa-envelope"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/engmohammed18/"><i class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>

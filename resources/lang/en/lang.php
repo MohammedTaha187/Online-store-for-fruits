@@ -54,6 +54,8 @@ return [
     "Site" => "Site",
     "Enjoy shopping through our branches" => "Enjoy shopping through our branches" ,
     'Add to Cart' => 'Add to Cart',
+    'Buy Now' => 'Buy Now',
+    
 
 
 ];
