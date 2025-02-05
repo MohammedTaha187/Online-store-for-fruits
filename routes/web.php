@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\web\LangController;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
-
 Route::get('product/show/{id}', [ProductController::class, 'show'])->name('product.show');
+Route::get('about', [OwnerController::class, 'index'])->name('about');
 
 
 

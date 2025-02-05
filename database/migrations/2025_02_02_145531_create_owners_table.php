@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title', 255);
             $table->string('facebook',255);
             $table->string('instagram', 255);
+            $table->string('image', 255);
             $table->string('x', 255);
             $table->timestamps();
         });

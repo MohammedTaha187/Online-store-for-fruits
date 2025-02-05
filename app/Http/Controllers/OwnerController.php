@@ -13,7 +13,10 @@ class OwnerController extends Controller
      */
     public function index()
     {
-        //
+        $owners = owner::paginate(3);
+        return view('About.index' , [
+            'owners' => $owners
+        ]);
     }
 
     /**

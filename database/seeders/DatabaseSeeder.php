@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             SettingSeeder::class,
             NewsSeeder::class,
+            OwnerSeeder::class,
 
         ]);
     }

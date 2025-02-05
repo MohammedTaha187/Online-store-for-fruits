@@ -16,8 +16,22 @@ class OwnerFactory extends Factory
      */
     public function definition(): array
     {
+        static $i = 0;
+        
+        $i++;
         return [
-            //
+            'name'=>json_encode([
+                'en' => $this->faker->word(),
+                'ar' => $this->faker->word(),
+            ]),
+            'title' => json_encode([
+                'en' => $this->faker->word(),
+                'ar' =>$this->faker->word(),
+            ]),
+            'facebook'=>$this->faker->word(),
+            'instagram' => $this->faker->word(),
+            'x' =>$this->faker->word(),
+            'image' => "owner/$i"  . ".jpg", 
         ];
     }
 }

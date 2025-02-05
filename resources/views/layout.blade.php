@@ -67,7 +67,7 @@
 								<li class="current-list-item"><a href="{{ route('home') }}">Home</a>
 
 								</li>
-								<li><a href="about">About</a></li>
+								<li><a href="{{ route('about') }}">About</a></li>
 								<li><a href="#">Pages</a>
 									<ul class="sub-menu">
 										<li><a href="404">404 page</a></li>

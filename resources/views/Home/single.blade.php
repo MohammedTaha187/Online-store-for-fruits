@@ -48,7 +48,7 @@
                             <li><a href="https://web.facebook.com/profile.php?id=100008541101034&locale=ar_AR"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="https://github.com/MohammedTaha187"><i class="fab fa-github"></i></a></li>
                             <li><a href="mailto:engmohammed1872@gmail.com"><i class="fas fa-envelope"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/engmohammed18/"><i class="fab fa-linkedin"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/engmohammed18/ "><i class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
