@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -17,21 +16,24 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         static $i = 0;
-        
-$i++;
+
+        $i++;
 
         return [
             'name' => json_encode([
                 'en' => $this->faker->word(),
                 'ar' => $this->faker->word(),
             ]),
-            'desc'
-            => json_encode([
+            'desc' => json_encode([
                 'en' => $this->faker->sentence(3),
                 'ar' => $this->faker->sentence(3),
             ]),
+            'shipping_method' => $this->faker->randomElement(['free', 'paid']),
+            'shipping_cost' => function (array $attributes) {
+                return $attributes['shipping_method'] === 'free' ? 0 : $this->faker->randomFloat(2, 5, 50);
+            },
             'price' => $this->faker->randomFloat(2, 1, 1000),
-            'image' => "prod/$i"  . ".jpg", 
+            'image' => "prod/{$i}.jpg", 
         ];
     }
 }

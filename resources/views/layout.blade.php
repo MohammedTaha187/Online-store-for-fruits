@@ -89,14 +89,13 @@
 								<li><a href="shop">Shop</a>
 									<ul class="sub-menu">
 										<li><a href="shop">Shop</a></li>
-										<li><a href="checkout">Check Out</a></li>
-										<li><a href="single-product">Single Product</a></li>
-										<li><a href="cart">Cart</a></li>
+	
+										<li><a href="{{ route('cart.index') }}">Cart</a></li>
 									</ul>
 								</li>
 								<li>
 									<div class="header-icons">
-										<a class="shopping-cart" href="cart"><i class="fas fa-shopping-cart"></i></a>
+										<a class="shopping-cart" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
 										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
 										<a class="language-toggle" href="{{ route('changeLanguage', app()->getLocale() == 'en' ? 'ar' : 'en') }}">
                                             <i class="fas fa-globe"></i>

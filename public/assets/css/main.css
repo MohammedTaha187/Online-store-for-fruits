@@ -1,6 +1,6 @@
 /*
 Template Name: Fruitkha - Responsive Bootstrap4 Shop Template
-Template URI: 
+Template URI:
 Description: Bootstrap template for fruits or any other kind of shop
 Author: Imran Hossain
 Author URI: https://imransdesign.com/
@@ -2060,7 +2060,7 @@ a.video-play-btn {
     left: 50%;
     margin-left: -45px;
   }
-  
+
   .abt-bg {
     background-image: url(../img/abt.jpg);
     height: 100%;
@@ -2073,7 +2073,7 @@ a.video-play-btn {
     z-index: 1;
 
   }
-  
+
   .abt-bg:after {
     position: absolute;
     left: 0;
@@ -2083,29 +2083,29 @@ a.video-play-btn {
     content: "";
     background-color: #051922;
     opacity: 0.3;
-    z-index: 0 !important; 
+    z-index: 0 !important;
   }
-  
+
   .abt-section .abt-text {
     padding: 50px;
     padding-left: 30px;
   }
-  
+
   .abt-text p {
     font-size: 15px;
     line-height: 1.6;
     margin-bottom: 10px;
   }
-  
+
   .abt-text p.top-sub {
     opacity: 0.8;
     margin-bottom: 10px;
   }
-  
+
   .abt-text p:last-child {
     margin-bottom: 0;
   }
-  
+
 
   .single-team-item img {
     position: relative;
@@ -2116,7 +2116,7 @@ a.video-play-btn {
     height: auto !important;
     max-width: 100% !important;
   }
-  
+
 
 
 
@@ -2430,17 +2430,40 @@ p.product-price span {
   font-weight: 400;
 }
 
-a.cart-btn {
-  font-family: 'Poppins', sans-serif;
-  display: inline-block;
-  background-color: #F28123;
-  color: #fff;
-  padding: 10px 20px;
-}
 
-a.cart-btn i {
-  margin-right: 5px;
-}
+
+.a .cart-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  .a .cart-btn i {
+    margin-right: 5px;
+  }
+
+.custom-btn {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-btn:hover {
+    background-color: #d96e1c; 
+    color: #fff;
+  }
+  
+  .custom-btn i {
+    margin-right: 5px;
+  }
+  
 
 .single-product-img img {
   border-radius: 5px;

@@ -36,11 +36,15 @@
                        <p>{{ $prod->desc() }}</p>
 
                         <div class="single-product-form">
-                            <form action="index.html">
-                                <input type="number" placeholder="0">
+                            <form action="{{ route('cart.add', $prod->id) }}" method="POST">                                @csrf
+                                <div class="input-group">
+                                    <input type="number" name="quantity" value="1" min="1" class="form-control" placeholder="Quantity">
+                                    <button type="submit" class="custom-btn">
+                                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                                    </button>
+                                </div>
                             </form>
-                            <a href="" class="cart-btn">
-                                <i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            
                                 <p><strong>Categories: </strong>{{ $prod->category->name() }}</p>
                         </div>
                         <h4>Talk to us:</h4>
