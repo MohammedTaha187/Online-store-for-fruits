@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
@@ -13,7 +14,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $cats = Category::orderBy('id');
+        $prods = Product::all();
+        return
+        view('Shop.index' , [
+            'cats' => $cats,
+                'prods' => $prods
+        ]);
     }
 
     /**
@@ -21,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -29,23 +36,30 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+
     }
 
     /**
      * Display the specified resource.
      */
     public function show(Category $category)
-    {
-        //
-    }
+{
+    $products = $category->products;
+
+    return view('Shop.index', [
+        'category' => $category,
+        'prods' => $products,
+        'cats' => Category::all(),
+    ]);
+}
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Category $category)
     {
-        //
+
     }
 
     /**
@@ -53,7 +67,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+
     }
 
     /**
@@ -61,6 +75,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
     }
 }
