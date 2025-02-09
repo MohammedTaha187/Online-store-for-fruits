@@ -30,8 +30,14 @@
                         <ul>
 
                             @foreach ($cats as $cat)
-                            <li><a href="{{ route('categories.show', $cat->id) }}">{{ $cat->name() }}</a></li>
-                        @endforeach
+                            <li><a href="{{ route('categories.show', $cat['id']) }}">@php
+                                $name = json_decode($cat->name, true);
+                                $lang = app()->getLocale();
+                            @endphp
+
+                            {{ $name[$lang] ?? $name['en'] }} 
+                            </a></li>
+                            @endforeach
 
 
                         </ul>
@@ -46,7 +52,7 @@
                         <div class="single-product-item">
                             <div class="product-image">
                                 <a href="{{ route('product.show', $prod->id) }}">
-                                    <img src="{{ asset('uploads/' . $prod->image) }}" alt="{{ $prod->name }}">
+                                    <img src="{{ asset('uploads/' . $prod->image) }}" alt="{{ $prod->name() }}">
                                 </a>
                             </div>
                             <h3>{{ $prod->name() }}</h3>

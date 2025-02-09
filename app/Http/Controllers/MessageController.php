@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
 
@@ -13,7 +14,10 @@ class MessageController extends Controller
      */
     public function index()
     {
-        //
+        $mess = Message::all();
+        return view('Contact.index', [
+            'mess' => $mess,
+        ]);
     }
 
     /**
@@ -21,16 +25,30 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('Contact.index');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMessageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'phone' => 'required|string|max:255',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+
+        $message = Message::create($request->all());
+
+
+        return redirect()->route('message.index')->with('success', 'Message created successfully.');
     }
+
 
     /**
      * Display the specified resource.

@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cats = Category::orderBy('id');
+        $cats = Category::orderBy('id')->get();
         $prods = Product::all();
         return
         view('Shop.index' , [

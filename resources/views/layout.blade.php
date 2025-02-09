@@ -75,7 +75,7 @@
 										<li><a href="single-news">Single News</a></li>
 									</ul>
 								</li>
-								<li><a href="contact">Contact</a></li>
+								<li><a href="{{ route('contact.index') }}">Contact</a></li>
 								<li><a href="{{route('shop.index')}}">Shop</a>
 
 								</li>

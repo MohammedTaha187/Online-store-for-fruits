@@ -52,7 +52,7 @@
                                     <td class="product-name">
                                         @php
                                             $name = json_decode($details['name'], true);
-                                            $localizedName = $name[app()->getLocale()] ?? 'No name available'; 
+                                            $localizedName = $name[app()->getLocale()] ?? 'No name available';
                                         @endphp
                                         {{ $localizedName }}
                                     </td>
@@ -73,7 +73,7 @@
                                 <td colspan="6" class="text-center">Your cart is empty</td>
                             </tr>
                         @endif
-                        
+
                         </tbody>
                     </table>
                 </div>
@@ -98,18 +98,17 @@
                                         }), 2) }}
                                     </td>
                                 </tr>
-                        
+
                                 <tr class="total-data">
                                     <td><strong>Shipping: </strong></td>
                                     <td>
                                         @php
-                                            // إذا كانت السلة تحتوي على أكثر من منتج، نحسب الشحن بناءً على أول منتج
-                                            $shippingMethod = collect(session('cart'))->first()['shipping_method'] ?? 'free'; 
+                                            $shippingMethod = collect(session('cart'))->first()['shipping_method'] ?? 'free';
                                             $shippingCost = collect(session('cart'))->sum(function($item) {
                                                 return $item['shipping_method'] === 'free' ? 0 : $item['shipping_cost'];
                                             });
                                         @endphp
-                        
+
                                         @if($shippingMethod === 'free')
                                             Free
                                         @else
@@ -117,7 +116,7 @@
                                         @endif
                                     </td>
                                 </tr>
-                        
+
                                 <tr class="total-data">
                                     <td><strong>Total: </strong></td>
                                     <td>
@@ -130,18 +129,18 @@
                                 </tr>
                             @endif
                         </tbody>
-                        
+
                     </table>
                     <div class="cart-buttons">
                         @if(session('cart'))
-                        <a href="checkout.html" class="boxed-btn black">Check Out</a>
+                        <a href="{{ route('order.store') }}" class="boxed-btn black">Check Out</a>
                         @else
-                            
+
                         @endif
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
