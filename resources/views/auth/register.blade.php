@@ -55,7 +55,7 @@
         <img src="https://cdn-icons-png.flaticon.com/512/415/415733.png" alt="Fruit Logo" class="logo">
         <h2 class="text-center">Join Fresh Fruits Market</h2>
         <p class="text-center text-muted">Create an account to get fresh and organic fruits!</p>
-        <form action="{{ route('register') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -72,6 +72,10 @@
             <div class="mb-3">
                 <label for="password_confirmation" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Upload Profile Image</label>
+                <input type="file" class="form-control" id="image" name="image">
             </div>
             <button type="submit" class="btn register-btn">Register</button>
             <a href="{{ route('login') }}" class="login-link">Already have an account? Login</a>
