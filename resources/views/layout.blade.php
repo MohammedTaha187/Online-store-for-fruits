@@ -49,58 +49,61 @@
 
 	<!-- header -->
 	<div class="top-header-area" id="sticker">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 col-sm-12 text-center">
-					<div class="main-menu-wrap">
-						<!-- logo -->
-						<div class="site-logo">
-							<a href="/">
-								<img src="assets/img/logo.png" alt="">
-							</a>
-						</div>
-						<!-- logo -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap">
+                        <!-- logo -->
+                        <div class="site-logo">
+                            <a href="/">
+                                <img src="assets/img/logo.png" alt="">
+                            </a>
+                        </div>
+                        <!-- logo -->
 
-						<!-- menu start -->
-						<nav class="main-menu">
-							<ul>
-								<li class="current-list-item"><a href="{{ route('home') }}">Home</a>
-
-								</li>
-								<li><a href="{{ route('about') }}">About</a></li>
-
-								<li><a href="news">News</a>
-									<ul class="sub-menu">
-										<li><a href="news">News</a></li>
-										<li><a href="single-news">Single News</a></li>
-									</ul>
-								</li>
-								<li><a href="{{ route('contact.index') }}">Contact</a></li>
-								<li><a href="{{route('shop.index')}}">Shop</a>
-
-								</li>
-								<li>
-									<div class="header-icons">
-										<a class="shopping-cart" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-										<a class="language-toggle" href="{{ route('changeLanguage', app()->getLocale() == 'en' ? 'ar' : 'en') }}">
+                        <!-- menu start -->
+                        <nav class="main-menu">
+                            <ul>
+                                <li class="current-list-item"><a href="{{ route('home') }}">Home</a></li>
+                                <li><a href="{{ route('about') }}">About</a></li>
+                                <li>
+                                    <a href="news">News</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="news">News</a></li>
+                                        <li><a href="single-news">Single News</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ route('contact.index') }}">Contact</a></li>
+                                <li><a href="{{ route('shop.index') }}">Shop</a></li>
+                                <li>
+                                    <div class="header-icons d-flex align-items-center">
+                                        <a class="shopping-cart me-3" href="{{ route('cart.index') }}"><i class="fas fa-shopping-cart"></i></a>
+                                        <a class="mobile-hide search-bar-icon me-3" href="#"><i class="fas fa-search"></i></a>
+                                        <a class="language-toggle me-3" href="{{ route('changeLanguage', app()->getLocale() == 'en' ? 'ar' : 'en') }}">
                                             <i class="fas fa-globe"></i>
-
                                         </a>
 
+                                        @auth
+                                            <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                                                @csrf
+                                                <button type="submit" class="btn btn-outline-light logout-btn">
+                                                    <i class="fas fa-sign-out-alt"></i>
+                                                </button>
+                                            </form>
+                                        @endauth
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                        <div class="mobile-menu"></div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-									</div>
-								</li>
-							</ul>
-						</nav>
-						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-						<div class="mobile-menu"></div>
-						<!-- menu end -->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	<!-- end header -->
 
 	<!-- search area -->

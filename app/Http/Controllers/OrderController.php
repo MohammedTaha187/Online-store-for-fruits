@@ -25,65 +25,46 @@ class OrderController extends Controller
      */
     public function create()
     {
-        
+        return view('Checkout.index');
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255',
+        'address' => 'required|string|max:255',
+        'phone' => 'required|string|max:255',
+        'say_something' => 'nullable|string|max:255',
+    ]);
 
-        $request->validate([
-            'name_en' => 'required|string|max:255',
-            'name_ar' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'address_en' => 'required|string|max:255',
-            'address_ar' => 'required|string|max:255',
-            'phone' => 'required|string|max:255',
-            'say_something_en' => 'nullable|string|max:255',
-            'say_something_ar' => 'nullable|string|max:255',
-        ]);
-
-
-        $user_id = auth()->check() ? auth()->id() : null;
-
-
-
-        $order = Order::create([
-            'user_id' => $user_id,
-            'name' => json_encode([
-                'en' => $request->name_en,
-                'ar' => $request->name_ar,
-            ]),
-            'email' => $request->email,
-            'address' => json_encode([
-                'en' => $request->address_en,
-                'ar' => $request->address_ar,
-            ]),
-            'phone' => $request->phone,
-            'note' => json_encode([
-                'en' => $request->say_something_en,
-                'ar' => $request->say_something_ar,
-            ]),
-        ]);
+    $order = Order::create([
+        'name' => $request->name,
+        'email' => $request->email,
+        'address' => $request->address,
+        'phone' => $request->phone,
+        'say_something' => $request->say_something,
+        'user_id' => auth()->id(),
+    ]);
 
 
-        if (session()->has('cart')) {
-            foreach (session('cart') as $item) {
-                $order->orderDetails()->create([
-                    'product_id' => $item['id'],
-                    'quantity' => $item['quantity'],
-                    'price' => $item['price'],
-                ]);
-            }
+    if (session()->has('cart')) {
+        foreach (session('cart') as $item) {
+            $order->products()->attach($item['id'], [
+                'quantity' => $item['quantity'],
+                'price' => $item['price'],
+            ]);
         }
-
-        session()->forget('cart');
-
-
-        return redirect()->route('checkout.success')->with('success', 'Order placed successfully!');
     }
+
+
+    session()->forget('cart');
+
+    return redirect()->route('order.index')->with('success', 'Order placed successfully!');
+}
 
 
 

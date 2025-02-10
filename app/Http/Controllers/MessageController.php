@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
@@ -15,8 +16,11 @@ class MessageController extends Controller
     public function index()
     {
         $mess = Message::all();
+        $settings = Setting::first();
+
         return view('Contact.index', [
             'mess' => $mess,
+            'settings' => $settings,
         ]);
     }
 
@@ -46,7 +50,7 @@ class MessageController extends Controller
         $message = Message::create($request->all());
 
 
-        return redirect()->route('message.index')->with('success', 'Message created successfully.');
+        return redirect()->route('contact.index')->with('success', 'Message created successfully.');
     }
 
 

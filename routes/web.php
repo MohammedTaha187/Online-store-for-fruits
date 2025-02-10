@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\web\LangController;
 
+Route::middleware([ 'auth'])->group(function () {
 
 //home
 Route::get('/', [ProductController::class, 'index'])->name('home');
@@ -28,8 +29,8 @@ Route::post('/cart/update', [CartController::class, 'updateCart'])->name('cart.u
 Route::post('/cart/remove', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 //contact
-Route::get('/contact' , [MessageController::class, 'index'])->name('contact.index');
-Route::post('/contact', [MessageController::class, 'store'])->name('message.store');
+Route::get('/contact', [MessageController::class, 'index'])->name('contact.index');
+Route::post('/messages', [MessageController::class, 'store'])->name('message.store');
 
 //cats
 Route::get('/shop' , [CategoryController::class, 'index'])->name('shop.index');
@@ -53,4 +54,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+
 });

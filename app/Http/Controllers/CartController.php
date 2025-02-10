@@ -13,11 +13,11 @@ class CartController extends Controller
     public function index()
     {
         $cart = session()->get('cart', []);
-        $cart = collect($cart); 
-    
+        $cart = collect($cart);
+
         return view('Cart.index', compact('cart'));
     }
-    
+
 
 
 
@@ -29,8 +29,9 @@ class CartController extends Controller
     if (isset($cart[$id])) {
         $cart[$id]['quantity'] += $request->quantity;
     } else {
-        
+
         $cart[$id] = [
+            'id' => $prods->id,
             "name" => $prods->name,
             "price" => $prods->price,
             "quantity" => $request->quantity,
@@ -51,7 +52,7 @@ class CartController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -59,7 +60,7 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        
+
     }
 
     /**
@@ -67,7 +68,7 @@ class CartController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -75,7 +76,7 @@ class CartController extends Controller
      */
     public function edit(string $id)
     {
-        
+
     }
 
     /**
