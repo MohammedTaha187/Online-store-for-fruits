@@ -27,14 +27,10 @@ class NewsFactory extends Factory
                 'en' => $this->faker->paragraph(3),
                 'ar' => $this->faker->paragraph(3),
                 ]),
-                'slug' => $this->faker->unique()->slug,
                 'image' => "news/$i"  . ".jpg",
-                'author' => json_encode([
-                    'en' => $this->faker->name,
-                    'ar' => $this->faker->name,
-                ]),
+                'author' => $this->faker->name,
                 'published_at' =>$this->faker->dateTimeBetween('-1 years', 'now'),
         ];
-    
+
     }
 }

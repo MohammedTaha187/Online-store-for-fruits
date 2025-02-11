@@ -13,8 +13,10 @@ class NewsController extends Controller
      */
     public function index()
     {
-        //
+        $news = News::orderby('id' , 'desc')->paginate(3);
+        return view('News.index', compact('news'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -31,13 +33,21 @@ class NewsController extends Controller
     {
         //
     }
-
     /**
      * Display the specified resource.
      */
-    public function show(News $news)
+    public function show($id)
     {
-        //
+         $news = News::with('comments')->find($id);
+
+         if (!$news) {
+            abort(404);
+        }
+
+         return view('News.Single-news.index', compact('news'));
+
+
+
     }
 
     /**

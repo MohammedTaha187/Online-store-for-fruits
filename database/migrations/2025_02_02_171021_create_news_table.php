@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('content');
-            $table->string('slug')->unique();
             $table->string('image');
-            $table->string('author');
-            $table->timestamp('published_at')->nullable();
+            $table->string('author')->default('Admin');
+            $table->timestamp('published_at')->useCurrent();
             $table->timestamps();
         });
     }

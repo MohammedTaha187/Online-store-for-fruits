@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -12,12 +13,14 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $prods = Product::orderBy('id' , 'desc')->paginate(6) ;
-        return view('Home.index' , [
-            'prods' => $prods
-        ]);
-    }
+{
+    $prods = Product::orderBy('id', 'desc')->paginate(6); // المنتجات مع الصفحات
+    $news = News::orderBy('id', 'desc')->paginate(3);
+
+    return view('Home.index', compact('prods', 'news'));
+}
+
+
 
     /**
      * Show the form for creating a new resource.

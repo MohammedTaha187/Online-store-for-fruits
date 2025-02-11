@@ -54,5 +54,6 @@ return [
     "Sections" => "أقسام",
     "Enjoy shopping through our branches" => "استمتع بالتسوق عبر فروعنا",
     'Add to Cart' => 'أضف إلى السلة',
+    'Products' => 'منتجات',
 
 ];

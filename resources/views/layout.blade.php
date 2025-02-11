@@ -70,11 +70,7 @@
                                 <li class="current-list-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li><a href="{{ route('about') }}">About</a></li>
                                 <li>
-                                    <a href="news">News</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="news">News</a></li>
-                                        <li><a href="single-news">Single News</a></li>
-                                    </ul>
+                                    <a href="{{ route('news.index') }}">News</a>
                                 </li>
                                 <li><a href="{{ route('contact.index') }}">Contact</a></li>
                                 <li><a href="{{ route('shop.index') }}">Shop</a></li>
@@ -85,9 +81,10 @@
                                         <a class="mobile-hide search-bar-icon me-3" href="#"><i
                                                 class="fas fa-search"></i></a>
                                         <a class="language-toggle me-3"
-                                            href="{{ route('changeLanguage', app()->getLocale() == 'en' ? 'ar' : 'en') }}">
+                                            href="{{ route('changeLanguage', session('lang', 'en') == 'en' ? 'ar' : 'en') }}">
                                             <i class="fas fa-globe"></i>
                                         </a>
+
 
                                         @auth
                                             <form method="POST" action="{{ route('logout') }}" class="d-inline">
