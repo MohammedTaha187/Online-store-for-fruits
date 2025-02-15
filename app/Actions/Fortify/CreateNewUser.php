@@ -39,7 +39,7 @@ class CreateNewUser implements CreatesNewUsers
         } else {
             $imgPath = 'uploads/user/default.jpg';
         }
-       
+
 
 
 

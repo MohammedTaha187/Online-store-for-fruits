@@ -4,7 +4,8 @@ return [
 
     "welcome"=> "Welcome",
     "home"=> "Home",
-    "about_us"=> "About Us",
+    "about"=> "About Us",
+    "news" => "News",
     "services"=> "Services",
     "contact"=> "Contact",
     "shop"=> "Shop",

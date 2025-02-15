@@ -1,26 +1,25 @@
 <?php
-
 namespace App\Http\Controllers\web;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Routing\Controller;
 
 class LangController extends Controller
 {
-    public function setLang($lang, Request $request)
+    public function switchLocale(Request $request, $locale)
     {
-        $acceptedLangs = ['en', 'ar'];
+        if (in_array($locale, ['ar', 'en'])) {
+          
+            if ($request->user()) {
+                $request->user()->update(['locale' => $locale]);
+            }
 
-        if (!in_array($lang, $acceptedLangs)) {
-            $lang = 'en';
+            // حفظ اللغة في الجلسة
+            session(['locale' => $locale]);
         }
 
-        // تخزين اللغة في الجلسة
-        Session::put('lang', $lang);
-        App::setLocale($lang);
-
-        return back();
+        return redirect()->back();
     }
 }

@@ -67,25 +67,21 @@
                         <!-- menu start -->
                         <nav class="main-menu">
                             <ul>
-                                <li class="current-list-item"><a href="{{ route('home') }}">Home</a></li>
-                                <li><a href="{{ route('about') }}">About</a></li>
+                                <li class="current-list-item"><a href="{{ route('home') }}">{{ __('lang.home') }}</a></li>
+                                <li><a href="{{ route('about') }}">{{ __('lang.about') }}</a></li>
                                 <li>
-                                    <a href="{{ route('news.index') }}">News</a>
+                                    <a href="{{ route('news.index') }}">{{ __("lang.news") }}</a>
                                 </li>
-                                <li><a href="{{ route('contact.index') }}">Contact</a></li>
-                                <li><a href="{{ route('shop.index') }}">Shop</a></li>
+                                <li><a href="{{ route('contact.index') }}">{{ __('lang.contact') }}</a></li>
+                                <li><a href="{{ route('shop.index') }}">{{ __('lang.shop') }}</a></li>
                                 <li>
                                     <div class="header-icons d-flex align-items-center">
-                                        <a class="shopping-cart me-3" href="{{ route('cart.index') }}"><i
-                                                class="fas fa-shopping-cart"></i></a>
-                                        <a class="mobile-hide search-bar-icon me-3" href="#"><i
-                                                class="fas fa-search"></i></a>
+
                                         <a class="language-toggle me-3"
-                                            href="{{ route('changeLanguage', session('lang', 'en') == 'en' ? 'ar' : 'en') }}">
-                                            <i class="fas fa-globe"></i>
-                                        </a>
-
-
+                                        href="{{ route('lang.switch', ['locale' => session('locale', config('app.locale')) == 'en' ? 'ar' : 'en']) }}">
+                                         <i class="fas fa-globe"></i>
+                                         {{ session('locale', config('app.locale')) == 'en' ? 'العربية' : 'English' }}
+                                     </a>
                                         @auth
                                             <form method="POST" action="{{ route('logout') }}" class="d-inline">
                                                 @csrf
@@ -115,24 +111,8 @@
 
     <!-- end header -->
 
-    <!-- search area -->
-    <div class="search-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
-                    <div class="search-bar">
-                        <div class="search-bar-tablecell">
-                            <h3>Search For:</h3>
-                            <input type="text" placeholder="Keywords">
-                            <button type="submit">Search <i class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end search area -->
+
+
 
     @yield('body')
 
@@ -222,6 +202,25 @@
 
 
     @yield('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    const searchIcon = document.querySelector(".search-bar-icon"); // أيقونة البحث
+    const searchArea = document.querySelector(".search-area"); // منطقة البحث
+    const closeBtn = document.querySelector(".close-btn"); // زر الإغلاق
+
+    // عند الضغط على أيقونة البحث، يتم إظهار البحث
+    searchIcon.addEventListener("click", function (event) {
+        event.preventDefault(); // منع الانتقال إلى #
+        searchArea.style.display = "block";
+    });
+
+    // عند الضغط على زر الإغلاق، يتم إخفاء البحث
+    closeBtn.addEventListener("click", function () {
+        searchArea.style.display = "none";
+    });
+});
+
+    </script>
     <script src="{{ asset('assets/js/jquery-1.11.3.min.js') }}"></script>
     <!-- bootstrap -->
     <script src="{{ asset('assets/bootstrap/js/bootstrap.min.js') }}"></script>

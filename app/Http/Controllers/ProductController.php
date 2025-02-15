@@ -13,12 +13,12 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $prods = Product::orderBy('id', 'desc')->paginate(6); // المنتجات مع الصفحات
-    $news = News::orderBy('id', 'desc')->paginate(3);
+    {
+        $prods = Product::orderBy('id', 'desc')->paginate(6); // المنتجات مع الصفحات
+        $news = News::orderBy('id', 'desc')->paginate(3);
 
-    return view('Home.index', compact('prods', 'news'));
-}
+        return view('Home.index', compact('prods', 'news'));
+    }
 
 
 
@@ -43,11 +43,10 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-       $prod = Product::findOrFail($id);
-       return view("Home.single",[
-        'prod' => $prod,
+        $prod = Product::findOrFail($id);
+        return view("Home.single", [
+            'prod' => $prod,
         ]);
-
     }
 
     /**
